@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AurumFold — Rural Darwin & surrounds Modular Rooms (EOI)</title>
+  <meta name="description" content="AurumFold — fold-up modular rooms from ~AUD $12,000 for Rural Darwin & surrounds properties. EOI only." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root{
+      --bg:#F6F8FC;
+      --card:#FFFFFF;
+      --ink:#0B1220;     /* primary text */
+      --ink2:#1F2937;    /* secondary text */
+      --muted:#374151;   /* helper text (still dark) */
+      --line:rgba(11,18,32,.12);
+      --gold1:#D8B56A;
+      --gold2:#B8892F;
+      --shadow:0 18px 60px rgba(11,18,32,.10);
+      --radius:18px;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 680px at 12% 8%, rgba(31,122,255,.12), transparent 60%),
+        radial-gradient(1000px 620px at 88% 12%, rgba(216,181,106,.16), transparent 62%),
+        radial-gradient(900px 700px at 50% 92%, rgba(110,231,255,.14), transparent 64%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(246,248,252,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:240px; height:auto}
+    .navlinks{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{font-size:14px; color:var(--ink2); padding:8px 10px; border-radius:12px}
+    .navlinks a:hover{background:rgba(11,18,32,.05)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px; border-radius:14px;
+      border:1px solid rgba(11,18,32,.16);
+      background:rgba(11,18,32,.04);
+      font-weight:800; font-size:14px;
+      cursor:pointer;
+    }
+    .btn:hover{background:rgba(11,18,32,.06)}
+    .btnPrimary{
+      border-color: rgba(184,137,47,.55);
+      background: linear-gradient(135deg, rgba(216,181,106,.32), rgba(31,122,255,.10));
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(184,137,47,.40);
+      background:rgba(216,181,106,.22);
+      color:var(--ink);
+      font-size:12px; font-weight:900;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero{padding:54px 0 28px}
+    .heroGrid{display:grid; grid-template-columns: 1.15fr .85fr; gap:18px; align-items:stretch}
+    .heroCopy{padding:26px}
+    h1{margin:10px 0 10px; font-size:40px; line-height:1.08; letter-spacing:-0.6px; color:var(--ink)}
+    .sub{color:var(--ink2); font-size:16px; margin:0 0 18px}
+    .gold{background: linear-gradient(135deg, var(--gold1), var(--gold2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    .heroTiles{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:16px}
+    .tile{
+      border:1px solid rgba(11,18,32,.12);
+      background:rgba(11,18,32,.02);
+      border-radius:16px;
+      padding:12px;
+      color:var(--ink);
+      font-size:14px;
+      font-weight:700;
+    }
+    .tile b{display:block; font-size:13px; font-weight:900; color:var(--ink)}
+    .tile span{display:block; color:var(--muted); font-weight:800; margin-top:2px}
+
+    .heroMedia{position:relative; min-height: 380px}
+    .heroMedia img{width:100%; height:100%; object-fit:cover; display:block}
+    .shade{position:absolute; inset:0; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(11,18,32,.55))}
+    .mediaCaption{position:absolute; left:16px; right:16px; bottom:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+    .captionBox{
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.86);
+      border-radius:16px;
+      padding:12px;
+      max-width:560px;
+    }
+    .captionBox .t{font-weight:900; color:var(--ink)}
+    .captionBox .d{color:var(--ink2); font-size:13px; margin-top:4px; font-weight:700}
+
+    section{padding:28px 0}
+    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px; flex-wrap:wrap}
+    .sectionHead h2{margin:0; font-size:22px; letter-spacing:-0.2px; color:var(--ink)}
+    .sectionHead p{margin:0; color:var(--ink2); max-width:760px; font-weight:700}
+
+    .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    .grid2{display:grid; grid-template-columns: repeat(2,1fr); gap:14px}
+
+    .mini{
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.98);
+      box-shadow: 0 12px 36px rgba(11,18,32,.06);
+    }
+    .mini h3{margin:0 0 6px; font-size:15px; color:var(--ink)}
+    .mini p, .mini li{margin:0; color:var(--ink2); font-size:14px; font-weight:700}
+    .mini ul{margin:0; padding-left:18px}
+    .mini li{margin:6px 0}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+    .gMain{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line)}
+    .gMain img{width:100%; height:420px; object-fit:cover; display:block}
+    .gStrip{display:grid; grid-template-columns: repeat(2,1fr); gap:14px}
+    .thumb{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); cursor:pointer}
+    .thumb img{width:100%; height:203px; object-fit:cover; display:block}
+    .thumb:hover{transform: translateY(-1px)}
+
+    /* Form */
+    .formCard{padding:18px}
+    form{display:grid; gap:12px}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    label{font-size:12px; color:var(--ink); font-weight:900}
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(11,18,32,.22);
+      background:#FFFFFF;
+      color:var(--ink);
+      outline:none;
+      font-weight:700;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(11,18,32,.55)}
+    input:focus, select:focus, textarea:focus{border-color: rgba(31,122,255,.55)}
+    textarea{min-height:110px; resize:vertical}
+    .helper{font-size:12px; color:var(--muted); font-weight:800; margin-top:6px}
+
+    .radioGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px}
+    .chip{
+      border:1px solid rgba(11,18,32,.18);
+      background: rgba(11,18,32,.03);
+      border-radius:14px;
+      padding:10px;
+      display:flex; gap:8px; align-items:flex-start;
+      cursor:pointer;
+    }
+    .chip:hover{background: rgba(11,18,32,.05)}
+    .chip input{width:auto; margin-top:2px}
+    .chip b{display:block; font-size:13px; color:var(--ink); font-weight:900}
+    .chip span{display:block; font-size:12px; color:var(--muted); font-weight:800}
+
+    .success{
+      display:none;
+      border:1px solid rgba(31,122,255,.26);
+      background: rgba(31,122,255,.08);
+      border-radius:16px;
+      padding:12px;
+      color: var(--ink);
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    details{border:1px solid rgba(11,18,32,.14); background: rgba(11,18,32,.03); border-radius: 16px; padding: 12px 14px}
+    summary{cursor:pointer; font-weight:900; color:var(--ink)}
+    details p{margin:8px 0 0; color:var(--ink2); font-weight:700}
+
+    footer{padding:26px 0 34px; color:var(--ink2); border-top:1px solid var(--line)}
+    .footGrid{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap}
+    .small{font-size:12px; max-width:860px; color:var(--muted); font-weight:800}
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: 1fr}
+      .gMain img{height:360px}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .row{grid-template-columns: 1fr}
+      .radioGrid{grid-template-columns: 1fr}
+      h1{font-size:34px}
+      .brand img{width:210px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <img src="assets/AurumFold-logo.svg" alt="AurumFold logo" />
+        </div>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#rural">Rural Darwin & surrounds</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#upgrades">Upgrades</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#approvals">Approvals</a>
+          <a href="#eoi">EOI</a>
+        </nav>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a class="btn" href="#gallery">View photos</a>
+          <a class="btn btnPrimary" href="#eoi">Join EOI</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <section class="hero" id="top">
+        <div class="heroGrid">
+          <div class="card heroCopy">
+            <div class="pill">EOI ONLY — no orders or payments taken</div>
+            <h1>Extra space on your block — <span class="gold">without building</span>.</h1>
+            <p class="sub">
+              Fold-up modular rooms from <b>~$12,000</b>, designed specifically for <b>Rural Darwin & surrounds properties</b> — <b>including a basic bathroom</b>.<br>
+              Ideal for acreage, workers, guests, home offices, or temporary living.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn btnPrimary" href="#eoi">Join the EOI list</a>
+              <a class="btn" href="#pricing">See pricing</a>
+            </div>
+
+            <div class="heroTiles" aria-label="Key highlights">
+              <div class="tile"><b>Delivered flat</b><span>Unfolds on site</span></div>
+              <div class="tile"><b>Rural-focused</b><span>Built for acreage</span></div>
+              <div class="tile"><b>Upgrade options</b><span>Air-con + flooring</span></div>
+              <div class="tile"><b>From ~$12k</b><span>Base unit target</span></div>
+              <div class="tile"><b>EOI only</b><span>No deposits taken</span></div>
+              <div class="tile"><b>Transparent</b><span>No delivery promises</span></div>
+            </div>
+
+            <div class="helper" style="margin-top:14px;">
+              <b>Transparency:</b> Specs and imagery are supplier-provided. If we proceed, we’ll confirm exact inclusions, compliance pathway, and final pricing before any sales.
+            </div>
+          </div>
+
+          <div class="card heroMedia">
+            <img src='assets/hero-unfolded-v2.png' alt='Fold-up modular unit'/>
+            <div class="shade"></div>
+            <div class="mediaCaption">
+              <div class="captionBox">
+                <div class="t">Built for rural practicality — presented with a premium finish</div>
+                <div class="d">A simple way to add an extra room on your block without a full build.</div>
+              </div>
+              <span class="pill">Target base: ~$12k</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rural">
+        <div class="sectionHead">
+          <div>
+            <h2>Designed for Rural Darwin & surrounds living</h2>
+            <p>Built for acreage and space — not suburban blocks.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Common use cases</h3>
+            <ul>
+              <li>Extra bedroom on acreage</li>
+              <li>Worker or farm accommodation</li>
+              <li>Home office or studio</li>
+              <li>Temporary living while building</li>
+              <li>Guest accommodation for family</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h3>Why this makes sense</h3>
+            <p>If you’ve got land, this is a straightforward way to add usable space without committing to a full build or long construction timelines.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="sectionHead">
+          <div>
+            <h2>Indicative pricing</h2>
+            <p>We’re validating whether a rural-friendly package around <b>~$12,000</b> is viable once landed costs and options are considered.</p>
+          </div>
+          <span class="pill">EOI stage pricing</span>
+        </div>
+
+        <div class="grid3">
+          <div class="mini">
+            <h3>Base unit — from ~$12,000 (includes bathroom)</h3>
+            <p>Fold-up modular room with insulated panels, steel frame, doors/windows, standard flooring, and a basic bathroom (toilet, shower, basin).</p>
+          </div>
+          <div class="mini">
+            <h3>Delivery & placement</h3>
+            <p>EOIs help decide whether we offer supply-only, basic placement, or a more turnkey option for rural blocks.</p>
+          </div>
+          <div class="mini">
+            <h3>What you’re comparing it to</h3>
+            <p>Most buyers compare this to a shed conversion, demountable/donga, caravan, or adding a room via a full build.</p>
+          </div>
+        </div>
+
+        <div class="helper" style="margin-top:12px;">
+          Pricing shown is indicative only and used to assess market viability before committing to imports.
+        </div>
+      </section>
+
+      <section id="upgrades">
+        <div class="sectionHead">
+          <div>
+            <h2>Optional upgrades</h2>
+            <p>The base unit includes a functional bathroom. Upgrades below relate to comfort, finish and installation preferences.</p>
+            <p>Final options depend on EOI feedback and what’s most practical for Rural Darwin & surrounds buyers.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Air-conditioning options</h3>
+            <p>No air-con • Provision only (pre-wired / bracket) • Factory-installed split system • Australian-installed split system</p>
+          </div>
+          <div class="mini">
+            <h3>Floor options</h3>
+            <p>Standard PVC board • MGO board • Fibre cement board • Vinyl / SPC plank upgrade</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="sectionHead">
+          <div>
+            <h2>Photos & diagrams</h2>
+            <p>Your selected images — click a thumbnail to swap the main image.</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="gMain card">
+            <img id='mainImg' src='assets/hero-folded-v2.png' alt='Gallery image'/>
+          </div>
+
+          <div class="gStrip">
+            <div class='thumb card' data-img='assets/hero-unfolded-v2.png'><img src='assets/hero-unfolded-v2.png' alt='Thumbnail'></div>
+            <div class='thumb card' data-img='assets/hero-folded-v2.png'><img src='assets/hero-folded-v2.png' alt='Thumbnail'></div>
+            <div class='thumb card' data-img='assets/framework-v2.png'><img src='assets/framework-v2.png' alt='Thumbnail'></div>
+            <div class='thumb card' data-img='assets/interior-v2.jpg'><img src='assets/interior-v2.jpg' alt='Thumbnail'></div>
+            <div class='thumb card' data-img='assets/bathroom-v2.jpg'><img src='assets/bathroom-v2.jpg' alt='Thumbnail'></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="approvals">
+        <div class="sectionHead">
+          <div>
+            <h2>Approvals & compliance</h2>
+            <p>We’ll stay transparent: approvals vary by location and intended use.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>What to expect</h3>
+            <p>Approval requirements vary depending on location, intended use and services. Rural properties often have more flexibility than suburban blocks.</p>
+          </div>
+          <div class="mini">
+            <h3>How EOIs help</h3>
+            <p>We’re using EOIs to decide whether units should be supplied as shell-only, plumbing-ready, or with clearer approval guidance for common rural use cases.</p>
+          </div>
+        </div>
+
+        <div class="mini" style="margin-top:14px;">
+          <p><b>This is Expression of Interest only.</b> No deposits, no payments, and no delivery promises until specifications and pathways are clearly defined.</p>
+        </div>
+      </section>
+
+      <section id="eoi">
+        <div class="sectionHead">
+          <div>
+            <h2>Expression of Interest form</h2>
+            <p>Help us confirm the right spec, options, and whether a ~$12k package is viable for Rural Darwin & surrounds.</p>
+          </div>
+          <span class="pill">Rural Darwin focus</span>
+        </div>
+
+        <div class="card formCard">
+          <div class="success" id="successBox">
+            Thanks — your EOI is ready. Your Expression of Interest has been submitted.
+          </div>
+
+          <form id="eoiForm" action="https://formspree.io/f/mnjbqdyj" method="POST">
+
+  <input type="hidden" name="_subject" value="New AurumFold EOI">
+  <input type="hidden" name="_redirect" value="https://mattszone.github.io/aurumfold/#eoi">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="row">
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@email.com" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" placeholder="04xx xxx xxx" />
+              </div>
+              <div>
+                <label for="postcode">Postcode / area</label>
+                <input id="postcode" name="postcode" placeholder="e.g., 0836 Humpty Doo" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="use">Intended use</label>
+                <select id="use" name="use" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Extra room on acreage</option>
+                  <option>Worker accommodation</option>
+                  <option>Home office / studio</option>
+                  <option>Temporary living while building</option>
+                  <option>Short-stay / Airbnb on acreage</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="setup">Preferred delivery</label>
+                <select id="setup" name="setup" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Supply only (I organise everything)</option>
+                  <option>Supply + basic placement</option>
+                  <option>More turnkey (delivered + setup guidance)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="aircon">Air-conditioning option</label>
+                <select id="aircon" name="aircon" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>No air-con</option>
+                  <option>Provision only (pre-wired / bracket)</option>
+                  <option>Factory-installed split system</option>
+                  <option>Australian-installed split system</option>
+                </select>
+              </div>
+              <div>
+                <label for="flooring">Floor option</label>
+                <select id="flooring" name="flooring" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Standard PVC board</option>
+                  <option>MGO board</option>
+                  <option>Fibre cement board</option>
+                  <option>Vinyl / SPC plank upgrade</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label>Expected price range (AUD) — for your preferred configuration</label>
+              <div class="radioGrid">
+                <label class="chip">
+                  <input type="radio" name="budget" value="Under $10k" required />
+                  <div><b>Under $10k</b><span>Shell / basic</span></div>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="budget" value="$10k–$14k (target)" />
+                  <div><b>$10k–$14k</b><span>Target package</span></div>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="budget" value="$14k–$20k+" />
+                  <div><b>$14k–$20k+</b><span>Add-ons / more turnkey</span></div>
+                </label>
+              </div>
+              <div class="helper">This helps confirm whether a ~$12k base package is viable after landed costs and options.</div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="wait">Acceptable wait time</label>
+                <select id="wait" name="wait" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Up to 6 weeks</option>
+                  <option>6–10 weeks</option>
+                  <option>10–16 weeks</option>
+                  <option>16+ weeks is fine</option>
+                </select>
+              </div>
+              <div>
+                <label for="stopper">What would stop you buying?</label>
+                <input id="stopper" name="stopper" placeholder="e.g., approvals, insulation, delivery, price, inclusions" />
+              </div>
+            </div>
+
+            <div>
+              <label for="musthave">Must-have features</label>
+              <textarea id="musthave" name="musthave" placeholder="Examples: better insulation, cyclone-ready options, aircon included, better windows/doors, kitchenette, bathroom, etc."></textarea>
+              <div class="helper">EOI only — we use this feedback to decide the final specification.</div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button class="btn btnPrimary" type="submit">Submit EOI</button>
+<p class="muted" style="margin-top:10px;">Submissions are sent via Formspree to our inbox. We’ll only use your details to follow up about AurumFold EOIs.</p>
+              <a class="btn" href="#top">Back to top</a>
+              <span class="helper">No spam. EOIs contacted first if we proceed.</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="grid2" style="margin-top:14px;">
+          <details>
+            <summary>Are you taking deposits or orders?</summary>
+            <p>No. This website is Expression of Interest only. If we proceed later, we’ll be clear about inclusions, lead times and refund terms.</p>
+          </details>
+          <details>
+            <summary>Is this suited to suburban blocks?</summary>
+            <p>This concept is aimed at rural properties first. EOIs help confirm the best fit for Rural Darwin & surrounds.</p>
+          </details>
+          <details>
+            <summary>Can you include air-conditioning?</summary>
+            <p>Yes — as an option. EOIs will tell us if buyers prefer factory-installed, Australian-installed, or provision only.</p>
+          </details>
+          <details>
+            <summary>What about flooring?</summary>
+            <p>We’re testing demand for upgraded floor options like MGO, fibre cement or vinyl/SPC plank upgrades.</p>
+          </details>
+
+          <details>
+            <summary>Does the base unit include a bathroom?</summary>
+            <p>Yes. The base unit includes a basic bathroom with toilet, shower and basin. EOIs help us understand whether buyers prefer a simple functional bathroom or upgraded finishes.</p>
+          </details>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footGrid">
+          <div>
+            <div class="pill">AurumFold — Rural Darwin & surrounds EOI Landing</div>
+            <div class="small" style="margin-top:10px;">
+              <b>Disclaimer:</b> This is not a sales offer. Specifications and imagery are supplier-provided and used for market validation only.
+              Final product, inclusions, compliance pathway and pricing will be confirmed before any sales.
+            </div>
+          </div>
+          <div class="small">
+            <b>Contact</b><br>
+            <a href="mailto:aurumfold@gmail.com" style="text-decoration:underline;">aurumfold@gmail.com</a><br>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+  // Gallery swap (kept)
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.addEventListener('click', () => {
+      const src = t.getAttribute('data-img');
+      const main = document.getElementById('mainImg');
+      if (main) main.src = src;
+    });
+  });
+</script>
+</body>
+</html>
